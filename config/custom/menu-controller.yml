@@ -1,0 +1,6 @@
+mapping:
+    Agenda: 'agenda'
+    Registration: 'registration'
+    Abstracts: 'abstracts'
+    Travel: 'travel'
+    Sponsors: 'sponsor'

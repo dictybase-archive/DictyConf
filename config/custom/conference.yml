@@ -1,0 +1,26 @@
+conference:    
+    year: 2013
+    location: 'Asheville, NC'
+    begin: 'July 29'
+    end: 'August 2'
+
+hosts:
+    host1:
+        name: 'Rex Chisholm'
+        email: 'rc@ditybase.org'
+    host2:
+        name: 'Warren Kibbe'
+        email: 'wk@dictybase.org'
+    host3:
+        name: 'Petra Fey'
+        email: 'pf@dictybase.org'
+
+# Available - Agenda, Registration, Abstracts, Travel, Sponsors
+# Default - Home, Login
+menubar: ["Agenda","Registration","Abstracts","Travel"]
+
+agenda-file: 
+
+registration:
+    begin: '24th March 2013 11:59:00 PM'
+    end: '28th Jul 2013 11:59:00 PM'
