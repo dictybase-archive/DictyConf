@@ -1,0 +1,34 @@
+<% content_for :title, "DictyConf Login" %>
+
+<%= stylesheet_link_tag 'login' %>
+
+<div class="row">
+	<div class="container">
+		<div class="login">
+
+			<%= form_for @user_session, :url => user_session_path do |f| %>
+
+				<div class="input-prepend">
+					<span class="add-on" id="label-field"><%= f.label :email %></span>
+					<%= f.text_field :email, :class => "span3", :id => "data-field", :placeholder => "Email", :required => true %>
+				</div>
+
+				<div class="control-group">
+					<div class="controls">
+						<%= recaptcha_tags :display => {:theme => 'white'} %>	
+					</div>
+				</div>
+
+				<br />
+
+				<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+					Submit
+				<% end %>
+
+			<% end %>
+
+			<%= link_to "New user?", :signup %>
+		</div>
+	</div>
+</div>
+
