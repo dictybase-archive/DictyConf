@@ -1,3 +1,20 @@
 class User < ActiveRecord::Base
-  # attr_accessible :title, :body
+
+	acts_as_authentic do |c|
+		c.login_field :email
+		c.validate_password_field(false)
+	end
+
+	attr_accessible :firstname, :lastname, :email, :address, :city, :country
+
+	validates :email,
+		:presence => true,
+		:uniqueness => true,
+		:format => {
+			:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+		}
+
+	def name
+		[firstname, lastname].join(' ')
+	end
 end
