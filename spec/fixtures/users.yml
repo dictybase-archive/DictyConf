@@ -16,6 +16,7 @@ two:
     firstname: John
     lastname: Doe
     email: john.doe@mail.ru
+    is_admin: true
     persistence_token: 5dd655523e7f24ca3eb3bbf45f8d8840638f4602d6282af8fd6b5a350b9c1a2972ff2f25f64f310f6889031aed812842e833c94645ec557cbef4b608169a143b 
     single_access_token: AlUXFZsNUOrDNB5HE4A
     perishable_token: 7iBuqZpZxt7IkYukUrIG
