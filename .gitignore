@@ -11,8 +11,10 @@
 /log/*.log
 /tmp
 
-#
+# Database config
 config/database.yml
 
-#
+# Capistrano config
 config/deploy.rb
+
+.rvmrc
