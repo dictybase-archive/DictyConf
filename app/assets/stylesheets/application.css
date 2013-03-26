@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+	margin: 0;
+	font: 12px/1.231 arial,helvetica,clean,sans-serif;
+	background:none repeat scroll 0 0 #333333;
+	min-height: 700px;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;
+}
+
+.container {
+	padding: 10px;
+}
+
