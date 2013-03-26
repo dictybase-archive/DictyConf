@@ -5,6 +5,9 @@ DictyConf2::Application.routes.draw do
 	match 'login' => 'user_sessions#new', :as => :login
 	match 'logout' => 'user_sessions#destroy', :as => :logout
 	match 'signup' => 'users#new', :as => :signup
+	match 'profile' => 'users#show', :as => :profile
+
+	match 'registration' => 'registrations#index', :as => :registration
 
 	resource :user_session
 	resource :users
