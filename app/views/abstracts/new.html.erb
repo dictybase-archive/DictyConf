@@ -1,0 +1,10 @@
+<% content_for :title, "DictyConf Abstracts" %>
+
+<%= form_for @abstract, :url => abstracts_path do |form| %>
+	<%= render :partial => 'form', :object => form %>
+
+	<div class="signup">
+		<%= form.submit "Submit", :class => "btn btn-primary" %>
+		<%= submit_tag "Cancel", :class => "btn btn-danger", :redirect_to => :home %>
+	</div>
+<% end %>
