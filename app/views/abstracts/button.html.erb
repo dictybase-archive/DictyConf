@@ -2,7 +2,11 @@
 <div class="row">
 	<div class="container" id="register">
 		<% if abstracts_submission_open? %>
-			<button class="btn btn-large btn-primary" type="button">Submit Abstract</button>       
-	<% end %>
+			<% if logged_in? %>
+				<%= button_to "Submit Abstract", abstracts_path, :class => "btn btn-large btn-primary" %>
+			<% else %>
+				<%= button_to "Submit Abstract", login_path, :class => "btn btn-large btn-primary" %>
+			<% end %>
+		<% end %>
 	</div>
 </div>
