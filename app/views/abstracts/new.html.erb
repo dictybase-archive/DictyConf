@@ -1,0 +1,60 @@
+<% content_for :title, "DictyConf Abstracts" %>
+
+<div class="container">
+	<div class="abstracts">
+
+		<%= form_for @abstract, :url => abstracts_path do |f| %>
+
+			<form class="form-horizontal">
+
+			<%= f.hidden_field :user_id %>
+
+			<div class="input-prepend clearfix">
+				<span class="add-on" id="abstract-form-label"><%= f.label :abstract_type %></span>
+
+				<label class="radio inline">
+					<%= f.radio_button :abstract_type, "Poster" %>
+					<%= f.label :abstract_type, "Poster" %>
+				</label>
+				<label class="radio inline">
+					<%= f.radio_button :abstract_type, "Talk" %>
+					<%= f.label :abstract_type, "Talk" %>
+				</label>
+			</div>
+			<br />
+			<div class="input-prepend">
+				<span class="add-on" id="abstract-form-label"><%= f.label :title %></span>
+				<%= f.text_field :title, :class => "input-xxlarge", :required => true %>
+			</div>
+			<br />
+			<div class="input-prepend">
+				<span class="add-on" id="abstract-form-label"><%= f.label :authors %></span>
+				<%= f.text_field :authors, :class => "input-xxlarge", :required => true %>
+			</div>
+			<br />
+			<div class="input-prepend">
+				<span class="add-on" id="abstract-form-label"><%= f.label :abstract %></span>
+				<%= f.text_area :abstract, :class => "input-xxlarge", :rows => 7, :required => true %>
+			</div>
+			<br />
+			<div class="input-prepend">
+				<span class="add-on" id="abstract-form-label"><%= f.label :presenter %></span>
+				<%= f.text_field :presenter, :class => "input-xxlarge", :required => true %>
+			</div>
+			<br />
+			<div class="input-prepend">
+				<span class="add-on" id="abstract-form-label"><%= f.label "Address for correspondence" %></span>
+				<%= f.text_field :address, :class => "input-xxlarge", :required => true %>
+			</div>
+			<br />
+			<label class="checkbox">
+				<%= f.checkbox %>
+			</label>
+		</form>
+
+		<%= f.submit "Submit", :class => "btn btn-primary" %>
+		<%= button_to "Cancel", :home, :class => "btn btn-danger" %>
+
+	<% end %>
+	</div>
+</div>

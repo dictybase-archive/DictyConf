@@ -1,0 +1,31 @@
+
+<% if logged_in? %>
+	<% if @abstracts.empty? %>
+		<h4><p class="text-info text-center">No abstracts submitted yet</p></h4>
+	<% else %>
+		<table class="table table-condensed table-bordered">
+			
+			<thead>
+				<tr>
+					<th>Title</th><th>Presenter</th><th>Type</th><th>Submitted</th><th>Actions</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<% @abstracts.each do |abstract| %>
+					<tr>
+					<td><%= h abstract.title %></td>
+					<td><%= h abstract.presenter %></td>
+					<td class="type"><%= h abstract.abstract_type %></td>
+					<td><span><%= abstract.created_at %></span></td>
+					<td>
+						<%= link_to 'Show', abstracts_path(abstract) %> |
+						<%= link_to 'Edit', edit_abstracts_path(abstract.id) if can_edit?(abstract) %> |
+						<%= link_to 'Destroy', abstract, :confirm => 'Are you sure?', :method => :delete if is_admin? %></td>
+					</td>
+				<% end %>
+			</tbody>
+
+		</table>
+	<%end%>
+<% end %>
