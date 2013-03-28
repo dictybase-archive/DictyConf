@@ -30,6 +30,7 @@ class AbstractsController < ApplicationController
 				logger.info "Abstract submission successful"
 				format.html { redirect_to(@abstract, :notice => 'Abstract was successfully created.') }
 				format.xml { render :xml => @abstract, :status => :created, :location => @abstract }
+        redirect_back_or_default abstracts_path
 			else
 				format.html { render :action => "new" }
 				format.xml { render :xml => @abstract.errors, :status => :unprocessable_entity }
