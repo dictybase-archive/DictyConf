@@ -1,0 +1,10 @@
+<% content_for :title, "DictyConf Edit Abstract" %>
+
+<%= form_for @abstract, :url => edit_abstracts_path(@abstract) do |form| %>
+	<%= render :partial => 'form', :object => form %>
+
+	<div class="signup">
+		<%= form.submit "Update", :class => "btn btn-primary" %>
+		<%= submit_tag "Cancel", :class => "btn btn-danger", :redirect_to => :home %>
+	</div>
+<% end %>

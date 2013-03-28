@@ -9,9 +9,7 @@
 			<%= link_to "Home", :home %>
 			</li>
 
-			<% DictyConfig.menubar.each do |menu| %>
-				<li><%= link_to menu, ActionMap.mapping["#{menu}"] %></li>
-			<% end %>
+			<li><%= link_to "Abstracts", :controller => 'abstracts',  :action => 'index' %></li>
 
 			<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Archive

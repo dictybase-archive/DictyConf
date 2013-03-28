@@ -1,0 +1,29 @@
+
+<% stylesheet_link_tag 'abstracts' %>
+
+<div class="container">
+	<div class="abstracts">
+
+		<form class="form-horizontal">
+
+			<%= form.hidden_field :user_id %>
+
+			<div class="input-prepend">
+				<span class="add-on" id="label-field"><%= form.label :title %></span>
+				<%= form.text_field :title, :class => "span5", :id => "data-field", :required => true %>
+			</div>
+			<br />
+			<div class="input-prepend">
+				<span class="add-on" id="label-field"><%= form.label :presenter %></span>
+				<%= form.text_field :presenter, :class => "span5", :id => "data-field", :required => true %>
+			</div>
+			<br />
+			<div class="input-prepend">
+				<span class="add-on" id="label-field"><%= form.label :abstract %></span>
+				<%= form.text_area :abstract, :class => "span5", :id => "data-field", :required => true %>
+			</div>
+			<br />
+		</form>
+	</div>
+</div>
+

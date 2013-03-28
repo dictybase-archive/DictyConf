@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326012915) do
+ActiveRecord::Schema.define(:version => 20130327175950) do
+
+  create_table "abstracts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "presenter"
+    t.text     "abstract"
+    t.boolean  "agreement"
+    t.text     "note_to_organizers"
+    t.string   "abstract_type"
+    t.string   "authors"
+    t.text     "address"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "user_sessions", :force => true do |t|
     t.datetime "created_at", :null => false
