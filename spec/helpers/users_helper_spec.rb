@@ -10,7 +10,6 @@ require 'spec_helper'
 #     end
 #   end
 # end
-# TODO - Find current_user. Fix the two tests
 describe UsersHelper do
 
 	fixtures :users
@@ -19,19 +18,26 @@ describe UsersHelper do
 		activate_authlogic
 	end
 
-	it "should tell if user is admin" do
+	it "should tell user is an admin" do
 		UserSession.create(users(:two))
-		#helper.stub!(:current_user_session).and_return(UserSession.find)
+		users(:two).should == current_user
 		is_admin?.should == true
-		#UserSession.destroy
-		#UserSession.create(users(:one))
-		#is_admin?.should_not == true
+	end
+
+	it "should tell user is NOT an admin" do
+		UserSession.create(users(:one))
+		users(:one).should == current_user
+		is_admin?.should_not == true
 	end
 
 	it "should tell if user is logged in" do
-		logged_in?.should_not == true
 		UserSession.create(users(:one))
+		users(:one).should == current_user
 		logged_in?.should == true
+	end
+
+	it "should tell user is NOT logged in" do
+		logged_in?.should_not == true
 	end
 
 end
