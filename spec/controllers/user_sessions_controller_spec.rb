@@ -15,7 +15,7 @@ describe UserSessionsController do
 	it "should destroy existing session" do
 		delete :destroy
 		assert_nil UserSession.find
-		assert_redirected_to new_user_session_url
+		assert_redirected_to :login
 	end
 
 end
