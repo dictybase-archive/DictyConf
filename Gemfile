@@ -39,7 +39,7 @@ gem 'capistrano'
 # To use debugger
 # gem 'debugger'
 
-gem "rspec-rails", ">= 2.0.1", :group => [:test]
+gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 gem 'assert_difference', :group => [:test]
 # For content length of response body warning
 gem 'webrick', '~> 1.3.1', :group => [:development]
