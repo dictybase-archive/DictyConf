@@ -1,5 +1,51 @@
 
 <% content_for :title, "DictyConf Edit Profile" %>
 
-<%= render  "form" %>
+<div class="container">
+	<div class="signup">
+
+		<%= form_for @user, :url => users_path(@user) do |f| %>
+			<form class="form-horizontal">
+
+			<div class="input-prepend">
+				<span class="add-on" id="label-field"><%= f.label :firstname %></span>
+				<%= f.text_field :firstname, :class => "span3", :readonly => true, :id => "data-field", :required => true %>
+			</div>
+			<br />
+			<div class="input-prepend">
+				<span class="add-on" id="label-field"><%= f.label :lastname %></span>
+				<%= f.text_field :lastname, :class => "span3", :readonly => true, :id => "data-field", :required => true %>
+			</div>
+			<br />
+			<div class="input-prepend">
+				<span class="add-on" id="label-field"><%= f.label :email %></span>
+				<%= f.email_field :email, :class => "span3", :readonly => true, :id => "data-field", :required => true %>
+			</div>
+			<br />
+			<div class="input-prepend">
+				<span class="add-on" id="label-field"><%= f.label :address %></span>
+				<%= f.text_field :address, :class => "span3", :id => "data-field" %>
+			</div>
+			<br />
+			<div class="input-prepend">
+				<span class="add-on" id="label-field"><%= f.label :city %></span>
+				<%= f.text_field :city, :class => "span3", :id => "data-field" %>
+			</div>
+			<br />
+			<div class="input-prepend">
+				<span class="add-on" id="label-field"><%= f.label :country %></span>
+				<%= f.text_field :country, :class => "span3", :id => "data-field" %>
+			</div>
+			<br/><br />
+
+			<div class="row">
+				<div class="container">
+					<div class="span1"><%= f.submit "Update", :class => "btn btn-primary" %></div> 
+					<div class="span1"><%= button_to "Cancel", :home, :class => "btn btn-danger" %></div>
+				</div>
+			</div>
+		<% end %>
+
+	</div>
+</div>
 
