@@ -8,9 +8,25 @@ DictyConf2::Application.routes.draw do
 	match 'profile' => 'users#show', :as => :profile
 
 	match 'registration' => 'registrations#index', :as => :registration
+	#match 'abstracts' => 'abstracts#index', :as => :abstracts
+	#match 'abstracts/:id' => 'abstracts#show', :as => :abstract
+	get 'abstracts' => 'abstracts#index'
 
-	resource :user_session
+	resource :user_sessions
 	resource :users
+	resource :abstracts
+	#resources :abstracts do
+		#collection do
+			#get 'index'
+			##get 'new'
+			##get 'edit'
+			#post 'create'
+			##put 'update'
+			##delete 'destroy'
+		#end
+	#end
+	
+	match '/travel' => 'home#travel', :as => :travel
 
 
 	# The priority is based upon order of creation:
