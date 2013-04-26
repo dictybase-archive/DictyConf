@@ -15,6 +15,9 @@
 			<div class="container">
 				<%= content_for?(:content) ? yield(:content) : yield %>
 			</div>
+
+			<%= render :file => 'layouts/footer' %>
+
 		</div>
 	</body>
 </html>
