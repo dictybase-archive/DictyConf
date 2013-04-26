@@ -1,9 +1,7 @@
 language: ruby
 rvm:
     - 1.9.3
-branches:
-    only:
-        - feature/abstracts
+    - 1.9.2
 env:
     - DB=postgresql
 script:
