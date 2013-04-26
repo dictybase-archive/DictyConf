@@ -2,14 +2,11 @@ class UsersController < ApplicationController
 
 	before_filter :require_no_user, :only => [:new, :create]
 	before_filter :require_user, :only => [:show, :edit, :update]
-	#skip_before_filter :login_required, :only => [:new,:create]
 
 	def new
 		email = params[:user_session][:email] if ! params[:user_session].nil?
 		email ||= params[:email]
-		#password = params[:user_session][:password] if ! params[:user_session].nil?
 		@user = User.new(:email => email )
-
 		respond_to do |format|
 			format.html # new.html.erb
 		end
