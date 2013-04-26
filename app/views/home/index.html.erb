@@ -1,38 +1,56 @@
 <% content_for :title, "DictyConf" %>
 
-<div class="container">
-	<%= image_tag("2013/header.jpg") %>
+<div id="myCarousel" class="carousel slide">
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+		<li data-target="#myCarousel" data-slide-to="3"></li>
+	</ol>
+	<!-- Carousel items -->
+	<div class="carousel-inner">
+		<div class=" active item"><%= image_tag("2013/carousel/whitewater200cr.jpg") %></div>
+		<div class="item"><%= image_tag("2013/carousel/biltmore_estate_200cr.jpg") %></div>
+		<div class="item"><%= image_tag("2013/carousel/bluemtns_200cr.jpg") %></div>
+		<div class="item"><%= image_tag("2013/carousel/yellowskyline_200cr.jpg") %></div>
+	</div>
+	<!-- Carousel nav -->
+	<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+	<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div>
 
 <div class="container">
 	<div class="row">
-		<div class="span7">
-			<div class="well">
-				<h3> Dicty Annual Conference, <%= DictyConfig.conference['year'] %></h3>
-				<br/>
-				<h4><%= DictyConfig.conference['begin'] %> - <%= DictyConfig.conference['end'] %> 
-				<br /> <%= DictyConfig.conference['location'] %>
+
+		<div class="span6" id="conf_title">
+			<h3>Annual International Dictyostelium Conference, <%= DictyConfig.conference['year'] %></h3>
+			<br/>
+			<h4>
+				<%= DictyConfig.conference['begin'] %> - <%= DictyConfig.conference['end'] %> 
+				<br/><br/> 
+				<%= DictyConfig.conference['location'] %>
 			</h4>
-			</div>
 		</div>
 
-		<div class="span4">
-			<div class="well">
-				<p>Hosted By:</p>
-				<h5>
-					<ul id="hosts">
-						<% DictyConfig.hosts.each do |k, v| %>
-							<li><address>
-							<strong><%= v['name'] %></strong> - 
-							<a href="mailto:<%= v['email'] %>"><%= v['email'] %></a>
-						</address></li>
-					<% end %>
-					</ul>
-				</h5>
-			</div>
+		<div class="span6">
+			<p>Hosted By:</p>
+			<p>
+			<ul id="hosts">
+				<% DictyConfig.hosts.each do |k, v| %>
+					<li>
+					<address>
+						<strong><%= v['name'] %></strong> <br> 
+						<%= v['affiliation'] %> <br>
+						<a href="mailto:<%= v['email'] %>"><%= v['email'] %></a>
+					</address>
+					</li>
+				<% end %>
+			</ul>
+			</p>
 		</div>
+
 	</div>
-
-	<%= render :file => 'home/conference-info' %>
-
 </div>
+
+<br/><br/>
+<%= render :file => 'home/conference-info' %>
