@@ -1,26 +1,29 @@
 conference:    
     year: 2013
-    location: 'Asheville, NC'
-    begin: 'July 29'
-    end: 'August 2'
+    location: 'Asheville, NC, USA'
+    begin: 'August 4'
+    end: 'August 8'
 
 hosts:
     host1:
-        name: 'Rex Chisholm'
-        email: 'rc@ditybase.org'
+        name: 'Chris Janetopoulos'
+        email: 'c.janetopoulos@vanderbilt.edu'
+        affiliation: 'Departments of Biological Sciences and Cell & Developmental Biology, Vanderbilt University, Nashville TN'
     host2:
-        name: 'Warren Kibbe'
-        email: 'wk@dictybase.org'
-    host3:
-        name: 'Petra Fey'
-        email: 'pf@dictybase.org'
+        name: 'Paul Steimle'
+        email: 'p_steiml@uncg.edu'
+        affiliation: 'Department of Biology, University of North Carolina at Greensboro, Greensboro NC'
 
 # Available - Agenda, Registration, Abstracts, Travel, Sponsors
 # Default - Home, Login
-menubar: ["Agenda","Registration","Abstracts","Travel"]
+menubar: ["Travel"]
 
 agenda-file: 
 
 registration:
-    begin: '24th March 2013 11:59:00 PM'
+    begin: '24th Mar 2013 11:59:00 PM'
     end: '28th Jul 2013 11:59:00 PM'
+
+abstracts:
+    begin: '27th Mar 2013 00:00:01 AM'
+    end: '31st May 2013 11:59:00 PM'
