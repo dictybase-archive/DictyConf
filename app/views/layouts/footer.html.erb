@@ -2,8 +2,10 @@
 <div class="row">
 	<hr>
 	<p style="text-align:center;">
-		Image credits: Asheville Convention and Visitors Bureau
-		<br/>
+		<% if current_page?(:home) %>
+			Image credits: Asheville Convention and Visitors Bureau
+			<br/>
+		<% end %>
 		&copy; <a href="http://dictybase.org">dictyBase.org</a> 2013
 	</p>
 </div>
