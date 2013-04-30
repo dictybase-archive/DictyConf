@@ -27,6 +27,7 @@ DictyConf2::Application.routes.draw do
 	#end
 	
 	match '/travel' => 'home#travel', :as => :travel
+	match '/sponsors' => 'home#sponsors'
 
 
 	# The priority is based upon order of creation:
