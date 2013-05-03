@@ -5,5 +5,7 @@ class RemoveColumnFromUser < ActiveRecord::Migration
 	end
 
 	def down
+		add_column :users, :crypted_password, :null => false
+		add_column :users, :password_salt
 	end
 end
