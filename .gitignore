@@ -17,4 +17,11 @@ config/database.yml
 # Capistrano config
 config/deploy.rb
 
-.rvmrc
+# Using RSpec, ingnoring test
+test/
+
+# Coverall.io
+coverage
+
+# Unused assets
+vendor/
