@@ -5,10 +5,10 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
-gem 'authlogic'
+gem 'pg', '0.15.1'
+gem 'authlogic', '3.3.0'
 gem 'recaptcha', :require => 'recaptcha/rails'
-gem 'bcdatabase'
+gem 'bcdatabase', '1.2.3'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,7 +34,7 @@ gem 'jquery-rails'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano'
+gem 'capistrano', '2.15.4'
 
 # To use debugger
 # gem 'debugger'
