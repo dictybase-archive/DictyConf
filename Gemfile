@@ -2,10 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'pg', '>= 0.15.1', :group => [:production, :staging]
+gem 'sqlite3', '>= 1.3.4', :group => [:development, :test]
 
-gem 'pg', '0.15.1'
 gem 'authlogic', '3.3.0'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'bcdatabase', '1.2.3'
