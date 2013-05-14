@@ -1,58 +1,68 @@
 
 <% content_for :title, "DictyConf Registration" %>
 
+<% if !registration_open? %>
+	<h4><p class="text-error text-center">Registration coming soon</p></h4>
+<% end %>
+
 <div class="container">
 	<div class="row">
 		<h4>Registration</h4>
 		<p align="justify">
-			Registration to the meeting is open via wire transfer, but we will have a credit card payment option in the next few days.  It will be closed by July 26th. Registration fees will cover accommodations, most meals, attendance to sessions, coffee breaks, beverages (except for a couple of cash bars), taxes, the excursion and the banquet.  Prices are as follows:
 
-			<h5>Early Registration ( - June 21)</h5>
-			<ul>
-				<li>Single use room - $1,200</li> 
-				<li>Double use room - $950 (per person)</li>
-			</ul>
-			<br/>
-			<h5>Late Registration (from June 21 to July 26)</h5>
-			<i>Note: Late registration is subject to availability</i>
-			<ul>
-				<li>Single use room - $1,300</li>
-				<li>Double use room - $1,050 (per person)</li>
-			</ul>
-			<br/>
-			<h5>Accompanying person:  (Include requests in the comments box.)</h5>
-			<ul>
-				<li>Accommodation - $67 double</li>  
-				<li>Accommodation - $134 double</li>  
-				<li>Accommodation including breakfast, dinners, and banquet – Add $202.00 to above (lunch is not included)</li>
-				<li>Excursion - $50</li>
-			</ul>
-			<br/>
-			<b>Extra nights</b><br/>
-			Extra nights, including breakfast can be reserved at the same hotel at a price of $134 (single use room) or $67 (double room, per person). Note that extra nights in a double room need only be included and paid by one person in the party! 
-			For special requests (like adding lunch or deleting meals for accompanying person), please use the 'Comments' box. 
+		<% if registration_open? %>
+			Registration to the meeting is open via wire transfer, but we will have a credit card payment option in the next few days.  It will be closed by July 26th. Registration fees will cover accommodations, most meals, attendance to sessions, coffee breaks, beverages (except for a couple of cash bars), taxes, the excursion and the banquet.  Prices are as follows:
+		<% end %>
+
+		<h5>Early Registration ( - June 21)</h5>
+		<ul>
+			<li>Single use room - $1,200</li> 
+			<li>Double use room - $950 (per person)</li>
+		</ul>
+		<br/>
+		<h5>Late Registration (from June 21 to July 26)</h5>
+		<i>Note: Late registration is subject to availability</i>
+		<ul>
+			<li>Single use room - $1,300</li>
+			<li>Double use room - $1,050 (per person)</li>
+		</ul>
+		<br/>
+		<h5>Accompanying person:  (Include requests in the comments box.)</h5>
+		<ul>
+			<li>Accommodation - $67 double</li>  
+			<li>Accommodation - $134 double</li>  
+			<li>Accommodation including breakfast, dinners, and banquet – Add $202.00 to above (lunch is not included)</li>
+			<li>Excursion - $50</li>
+		</ul>
+		<br/>
+		<b>Extra nights</b><br/>
+		Extra nights, including breakfast can be reserved at the same hotel at a price of $134 (single use room) or $67 (double room, per person). Note that extra nights in a double room need only be included and paid by one person in the party! 
+		For special requests (like adding lunch or deleting meals for accompanying person), please use the 'Comments' box. 
 		</p>
 	</div>
 
 	<div class="row">
 		<h4>Payment Method</h4>
 		<p align="justify">
-			The information for bank transfers is below:  All transfers must be in US dollars
+		The information for bank transfers is below:  All transfers must be in US dollars
 
-			<table class="table table-bordered">
-				<tr><td>ACCOUNT NAME:</td><td>2013 Dictyostelium Conf - Paul Steimle</td></tr>
-				<tr><td>ACCOUNT NUMBER:</td><td>237024709451</td></tr>
-				<tr><td>BANK:</td><td>Bank of America, 629 Green Valley Rd., Greensboro, NC, 27408, USA</td></tr>
-				<tr><td>SWIFT #:</td><td>BOFAUS3N</td></tr>
-				<tr><td>ROUTING #:</td><td>026009593</td></tr>
-				<tr><td>IBAN:</td><td>Bank of America does not have an IBAN number since the United States does not participate in IBAN program</td></tr>
-			</table>
+		<table class="table table-bordered">
+			<tr><td>ACCOUNT NAME:</td><td>2013 Dictyostelium Conf - Paul Steimle</td></tr>
+			<tr><td>ACCOUNT NUMBER:</td><td>237024709451</td></tr>
+			<tr><td>BANK:</td><td>Bank of America, 629 Green Valley Rd., Greensboro, NC, 27408, USA</td></tr>
+			<tr><td>SWIFT #:</td><td>BOFAUS3N</td></tr>
+			<tr><td>ROUTING #:</td><td>026009593</td></tr>
+			<tr><td>IBAN:</td><td>Bank of America does not have an IBAN number since the United States does not participate in IBAN program</td></tr>
+		</table>
 		</p>
+		<button class="btn btn-primary" type="button">Credit Card Payment</button>       
 	</div>
+	<br/>
 
-	<div class="row">
-		<h4>Cancellation</h4>
-		<p align="justify">	
+	<% if registration_open? %>
+		<div class="row">
+			<h4>Cancellation</h4>
+			<p align="justify">	
 			Cancellation and/or refund requests must be submitted in writing to Paul Steimle<br/> 
 			<ul>	
 				<li>Email: p_steiml@uncg.edu</li>
@@ -60,8 +70,10 @@
 				<li>Fax: 336-334-5839</li>
 			</ul>
 			Cancellations received until June 14th, will be refunded with a deduction of $50.00. From June 14th until July 26th there will be a refund of 50%. From July 26th on, no refund. 
-		</p>
-	</div>
+			</p>
+		</div>
+	<% end %>
+
 </div>
 
 <%= render :file => 'registrations/register-button' %>
