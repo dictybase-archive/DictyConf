@@ -25,3 +25,6 @@ coverage
 
 # Unused assets
 vendor/
+
+# Database files
+db/*.db
