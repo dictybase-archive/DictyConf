@@ -1,4 +1,5 @@
 class AbstractsController < ApplicationController
+
 	skip_before_filter :login_required, :only => [ :index, :show ]
 
 	def index
@@ -9,7 +10,7 @@ class AbstractsController < ApplicationController
 		end
 		respond_to do |format|
 			format.html # index.html.erb
-			#format.xml { render :xml => @abstracts }
+			format.xml { render :xml => @abstracts }
 		end
 	end
 
@@ -28,11 +29,11 @@ class AbstractsController < ApplicationController
 		respond_to do |format|
 			if @abstract.save
 				logger.info "Abstract submission successful"
-				format.html { redirect_to(@abstract, :notice => 'Abstract was successfully created.') }
+				#format.html { redirect_to(@abstract, :notice => 'Abstract was successfully created.') }
 				format.xml { render :xml => @abstract, :status => :created, :location => @abstract }
-        redirect_back_or_default abstracts_path
+				redirect_back_or_default abstracts_path
 			else
-				format.html { render :action => "new" }
+				#format.html { render :action => "new" }
 				format.xml { render :xml => @abstract.errors, :status => :unprocessable_entity }
 			end
 		end
