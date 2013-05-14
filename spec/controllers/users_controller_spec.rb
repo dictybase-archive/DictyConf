@@ -9,7 +9,7 @@ describe UsersController do
 
 	it "should create user" do
 		assert_difference 'User.count' do
-			post :create, :user => { :firstname => "Harry", :lastname => "Potter", :email => "hp@jkr.net" }
+			post :create, user: { firstname: "Harry", lastname: "Potter", email: "hp@jkr.net" }
 		end
 		assert_redirected_to :home
 	end
