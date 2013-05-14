@@ -18,4 +18,9 @@ describe UserSessionsController do
 		assert_redirected_to :login
 	end
 
+	it "should redirect to signup, if user doesn't exist" do 
+		post :create, :user_session => { :email => "sergio_ramos@fifa.org" }
+		assert_redirected_to :signup
+	end
+
 end
