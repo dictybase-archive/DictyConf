@@ -11,3 +11,13 @@ one:
     address: "Bermuda Triangle"
     presenter: "D. discoideum"
     agreement: true
+
+two:
+    title: "Abstract 11 for Dicty International Conference"
+    authors: "Sachin Tendulkar, Roger Federer"
+    abstract: "We are social amoeba. And we will rock you!"
+    address: "North Dakota"
+    presenter: "Roger Federer"
+    agreement: true
+
+
