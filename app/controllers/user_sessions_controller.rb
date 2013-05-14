@@ -20,7 +20,7 @@ class UserSessionsController < ApplicationController
 			render :action => :new
 		elsif @user.nil?
 			logger.debug "User doesn't exist"
-			render :signup
+			redirect_to :signup
 		else
 			@user_session = UserSession.new(@user)
 			if @user_session.save
