@@ -1,6 +1,10 @@
 DictyConf2::Application.routes.draw do
 
-	root :to => 'home#index', :as => :home
+	root to: 'home#index', :as => :home
+
+	resource :user_sessions, only: [:create, :new, :destroy]
+	resource :users, only: [:create, :new, :edit, :show, :update]
+	resource :abstracts, only: [:index, :new, :create]
 
 	match 'login' => 'user_sessions#new', :as => :login
 	match 'logout' => 'user_sessions#destroy', :as => :logout
@@ -8,24 +12,8 @@ DictyConf2::Application.routes.draw do
 	match 'profile' => 'users#show', :as => :profile
 
 	match 'registration' => 'registrations#index', :as => :registration
-	#match 'abstracts' => 'abstracts#index', :as => :abstracts
-	#match 'abstracts/:id' => 'abstracts#show', :as => :abstract
-	get 'abstracts' => 'abstracts#index'
+	match 'abstracts' => 'abstracts#index', :as => :abstracts
 
-	resource :user_sessions
-	resource :users
-	resource :abstracts
-	#resources :abstracts do
-		#collection do
-			#get 'index'
-			##get 'new'
-			##get 'edit'
-			#post 'create'
-			##put 'update'
-			##delete 'destroy'
-		#end
-	#end
-	
 	match '/travel' => 'home#travel', :as => :travel
 	match '/sponsors' => 'home#sponsors'
 
