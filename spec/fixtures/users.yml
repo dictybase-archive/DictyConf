@@ -8,6 +8,7 @@ one:
     firstname: Jane
     lastname: Doe
     email: jane_doe@antartica.org
+    is_registered: false
     persistence_token: 0e51bdec9cd21406cd8e98d4a524eafd555964ab762dc96b2e222f9c52493fe37e67443798f91ebaebf5937eea5d8fbf013016a58bd46bd587ff0f8dbd9e4734
     single_access_token: 0yzKZ9wQjRMk7KlAV0nW
     perishable_token: zqNomC10nG31Bc3YfXq
