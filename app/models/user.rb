@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 		c.validate_password_field(false)
 	end
 
-	attr_accessible :firstname, :lastname, :email, :is_admin, :address, :city, :country
+	attr_accessible :firstname, :lastname, :email, :is_admin, :address, :city, :country, :zipcode, :institute, :phone
 
 	validates :email,
 		:presence => true,
