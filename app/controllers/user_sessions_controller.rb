@@ -1,9 +1,9 @@
 class UserSessionsController < ApplicationController
 
-	before_filter :require_no_user, :only => [:new, :create]
-	before_filter :require_user, :only => :destroy
+	#before_filter :require_no_user, :only => [:new, :create]
+	#before_filter :require_user, :only => :destroy
 
-	include UserSessionsHelper
+	include UserSessionsHelper, UsersHelper
 
 	def new
 		@user_session = UserSession.new
@@ -11,26 +11,65 @@ class UserSessionsController < ApplicationController
 
 	def create
 		@user = get_user(params[:user_session])
+		session[:email] = params[:user_session][:email]
 
 		has_valid_email = valid_email?(params[:user_session][:email])
 		has_valid_password = verify_recaptcha
 
+
 		if !has_valid_email or !has_valid_password
-			logger.debug "Invalid email/password"
+			logger.info 'Invalid user name and password'
+			flash[:notice] = 'Invalid email and/or password, Please try again'
+			@user_session = UserSession.new
 			render :action => :new
-		elsif @user.nil?
-			logger.debug "User doesn't exist"
-			redirect_to :signup
 		else
-			@user_session = UserSession.new(@user)
-			if @user_session.save
-				logger.info "Login succesful"
-				flash[:notice] = "Login successful!"
-				redirect_back_or_default :home
+			if @user.nil?
+				if session[:where_from] == 'registration'
+					if !is_registered?
+						flash[:notice] = "You are not registered"
+						redirect_to new_registrations_path
+					else
+						flash[:notice] = "You are already registered with #{params[:user_session][:email]}"
+						redirect_to registrations_path(:id => @user.id)
+					end
+				elsif session[:where_from] == 'abstract'
+					flash[:notice_error] = "Please try to register or submit an abstract first"
+					redirect_to new_users_path
+				end
+				redirect_to :signup
 			else
-				logger.debug "Login failed"
-				flash[:notice] = "Login failed!"
-				render :action => :new
+				@user_session = UserSession.new(@user)
+				if @user_session.save
+					logger.info "Successfully logged in user #{params[:user_session][:email]}."
+					logger.info "#{session[:where_from]}"
+
+					if session[:where_from] == 'registration'
+						if is_registered?
+							logger.info "Already registered"
+							flash[:notice] = "You are already registered with #{params[:user_session][:email]}"
+							redirect_to registrations_path(:id => @user.id)
+						elsif !is_registered? and @user.email.empty? == false
+							logger.info "NOT registered, but account exists"
+							flash[:notice] = "You are NOT registered, but your account exists with email #{params[:user_session][:email]}"
+							redirect_to edit_registrations_path(:id => @user.id)
+						else
+							logger.info "#{session[:email]} is not registered. Taking him to registration form"
+							redirect_to new_registrations_path
+						end
+					else
+						if is_admin?
+							flash[:notice] = "Logged in as admin"
+							redirect_to admin_url
+						else
+							redirect_to abstracts_path
+						end
+					end
+					redirect_back_or_default :home
+				else
+					logger.info 'Login failed !!!'
+					flash[:notice_error] = "Unable to login with #{params[:user_session][:email]}, Please try again"
+					render :action => :new
+				end
 			end
 		end
 	end
