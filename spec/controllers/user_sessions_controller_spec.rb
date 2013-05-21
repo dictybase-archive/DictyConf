@@ -9,7 +9,6 @@ describe UserSessionsController do
 		assert user_session = UserSession.find
 		users(:one).should == user_session.user
 		users(:two).should_not == user_session.user
-		assert_redirected_to :home
 	end
 
 	it "should destroy existing session" do
