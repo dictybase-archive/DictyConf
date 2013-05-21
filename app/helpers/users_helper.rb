@@ -8,4 +8,8 @@ module UsersHelper
 		!current_user.blank?
 	end
 
+	def is_registered? #(user=nil)
+		return true if logged_in? && current_user.is_registered
+	end
+
 end
