@@ -48,23 +48,27 @@ class UserSessionsController < ApplicationController
 							logger.info "Already registered"
 							flash[:notice] = "You are already registered with #{params[:user_session][:email]}"
 							redirect_to registrations_path(:id => @user.id)
+							return
 						elsif !is_registered? and @user.email.empty? == false
 							logger.info "NOT registered, but account exists"
 							flash[:notice] = "You are NOT registered, but your account exists with email #{params[:user_session][:email]}"
 							redirect_to edit_registrations_path(:id => @user.id)
+							return
 						else
 							logger.info "#{session[:email]} is not registered. Taking him to registration form"
 							redirect_to new_registrations_path
+							return
 						end
 					else
 						if is_admin?
 							flash[:notice] = "Logged in as admin"
 							redirect_to admin_url
+							return
 						else
 							redirect_to abstracts_path
+							return
 						end
 					end
-					redirect_back_or_default :home
 				else
 					logger.info 'Login failed !!!'
 					flash[:notice_error] = "Unable to login with #{params[:user_session][:email]}, Please try again"
@@ -75,7 +79,7 @@ class UserSessionsController < ApplicationController
 	end
 
 	def destroy
-		current_user_session.destroy
+		current_user_session.destroy if !current_user_session.nil?
 		flash[:notice] = "Logout successful!"
 		redirect_back_or_default :login
 	end
