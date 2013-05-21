@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130327175950) do
+ActiveRecord::Schema.define(:version => 20130521171858) do
 
   create_table "abstracts", :force => true do |t|
     t.integer  "user_id"
@@ -52,6 +52,10 @@ ActiveRecord::Schema.define(:version => 20130327175950) do
     t.string   "last_login_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "institute"
+    t.string   "zipcode"
+    t.integer  "phone"
+    t.boolean  "is_registered",       :default => false, :null => false
   end
 
 end
