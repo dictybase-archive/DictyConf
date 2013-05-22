@@ -21,9 +21,9 @@ menubar: ["Registration", "Travel"]
 agenda-file: 
 
 registration:
-    begin: '15th May 2013 00:00:00 AM'
+    begin: '30th May 2013 00:00:00 AM'
     end: '26th Jul 2013 11:59:00 PM'
 
 abstracts:
-    begin: '15th May 2013 00:00:01 AM'
+    begin: '30th May 2013 00:00:01 AM'
     end: '10th Jul 2013 11:59:00 PM'
