@@ -3,7 +3,7 @@
 	<div class="container" id="register">
 		<% if abstracts_submission_open? %>
 			<% if logged_in? %>
-				<%= button_to "Submit Abstract", abstracts_path, :class => "btn btn-large btn-primary" %>
+				<%= button_to "Submit Abstract", new_abstracts_path, :method => :get, :class => "btn btn-large btn-primary" %>
 			<% else %>
 				<%= button_to "Submit Abstract", login_path, :class => "btn btn-large btn-primary" %>
 			<% end %>
