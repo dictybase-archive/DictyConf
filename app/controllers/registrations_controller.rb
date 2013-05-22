@@ -2,7 +2,7 @@ class RegistrationsController < ApplicationController
 
 	def new
 		logger.info 'User is NOT registered'
-		@user = User.new(session[:email])
+		@user = User.new(email: current_user.email)
 		render :action => 'new'
 	end
 
@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
 		@user = User.new(params[:user])
 		@user.is_registered = 1
 		if @user.save
-			# logger.info "Sending an email to #{@user.email}"
+			logger.info "Sending an email to #{@user.email}"
 
 			# Send confirmation emails to the host and the user
 			# RegistrationConfirmation.registration_confirmation_to_user(@user).deliver
@@ -32,7 +32,6 @@ class RegistrationsController < ApplicationController
 	end
 
 	def update
-
 	end
 
 	def index

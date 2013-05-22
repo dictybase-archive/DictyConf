@@ -1,6 +1,6 @@
 class UserSessionsController < ApplicationController
 
-	before_filter :require_no_user, :only => [:new, :create]
+	# before_filter :require_no_user, :only => [:new, :create]
 	before_filter :require_user, :only => :destroy
 
 	include UserSessionsHelper, UsersHelper
@@ -48,12 +48,12 @@ class UserSessionsController < ApplicationController
 						elsif !is_registered? and @user.email.empty? == false
 							logger.info "NOT registered, but account exists"
 							flash[:notice] = "You are NOT registered, but your account exists with email #{params[:user_session][:email]}"
-							redirect_to edit_registrations_path(:id => @user.id)
+							redirect_to new_registrations_path(@user) 
 							return
-						else
-							logger.info "#{session[:email]} is not registered. Taking him to registration form"
-							redirect_to new_registrations_path
-							return
+							#else
+							#	logger.info "#{session[:email]} is not registered. Taking him to registration form"
+							#	redirect_to new_registrations_path
+							#	return
 						end
 					else
 						if is_admin?
