@@ -14,7 +14,6 @@ describe UsersController do
 		assert_redirected_to :home
 	end
 
-	# TODO - Add users/show.html.erb. Fix this test
 	it "should show user" do
 		UserSession.create(users(:one))
 		get :show
