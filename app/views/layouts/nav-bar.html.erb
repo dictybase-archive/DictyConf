@@ -28,26 +28,29 @@
 		<% if logged_in? %>
 			<ul class="nav nav-pills pull-right">
 				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %>
-							<b class="caret"></b>
-					</a>
-					<ul class="dropdown-menu">
-						<li><%= link_to "Edit Profile", edit_users_path %></li>
-						<% if is_admin? %>
-							<li class="divider"></li>
-							<li><%= link_to "View Registrations", :home %></li>	
-							<li class="divider"></li>
-						<% end %>
-						<li><%= link_to "Logout", :logout %></li>
-					</ul>
-				</li>
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %>
+				<b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+				<li><%= link_to "Edit Profile", edit_users_path(current_user) %></li>
+				<% if is_admin? %>
+					<li class="divider"></li>
+					<li><%= link_to "View All Registrations", :home %></li>	
+					<li class="divider"></li>
+				<% end %>
+				<% if is_registered? %>
+					<li><%= link_to "Edit Registration", edit_registrations_path(current_user)  %></li>	
+				<% end %>
+				<li><%= link_to "Logout", :logout %></li>
 			</ul>
-		<% else %>
-			<ul class="nav nav-pills pull-right">
-				<li><%= link_to "Login", :login %></li>
-			</ul>
-		<% end %>
+			</li>
+		</ul>
+	<% else %>
+		<ul class="nav nav-pills pull-right">
+			<li><%= link_to "Login", :login %></li>
+		</ul>
+	<% end %>
 
-	</div>
+</div>
 </div>
 
