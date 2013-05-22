@@ -1,0 +1,50 @@
+<% content_for :title, "Dicty12: Registration Details" %>
+
+<p id="notice"><%= notice %></p>
+
+<h4>You registered on <%= l @user.created_at.to_date, :format => :long %> at <%= l @user.created_at, :format => :am_pm %> </h4>
+
+<p>
+<b>First name:</b>
+<%= @user.firstname %>
+</p>
+
+<p>
+<b>Last name:</b>
+<%= @user.lastname %>
+</p>
+
+<p>
+<b>Email:</b>
+<%= @user.email %>
+</p>
+
+<p>
+<b>Institute Affiliation:</b>
+<%= @user.institute %>
+</p>
+
+<p>
+<b>Address:</b>
+<%= @user.address %>
+</p>
+
+<p>
+<b>City:</b>
+<%= @user.city %>
+</p>
+
+<p>
+<b>Zipcode:</b>
+<%= @user.zipcode %>
+</p>
+
+<p>
+<b>Country:</b>
+<%= @user.country %>
+</p>
+
+<p>
+<b>Phone:</b>
+<%= @user.phone %>
+</p>

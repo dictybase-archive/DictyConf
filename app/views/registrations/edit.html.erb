@@ -1,0 +1,69 @@
+<% content_for :title, "DictyConf: Registration Form" %>
+<%#= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" %>
+<%#= javascript_include_tag :defaults %> 
+<!-- Issue with rails.js. Hence using jQuery.min.js -->
+<%#= javascript_include_tag "jquery", "dicty12Conf" %>
+<%#= stylesheet_link_tag "jquery-ui-datepicker" %>
+
+<%= form_for @user, url: users_path(@user), html: {:multipart => true, :method => 'put'} do |f| %>
+
+	<% if @user.errors.any? %>
+		<div id="error_explanation">
+			<h2>We have <%= pluralize(@user.errors.count, "error") %> on the form</h2>
+			<ul>
+				<% @user.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<%#= session[:where_from] %>
+
+	<table>
+		<tr>
+			<td><%= f.label :firstname %></td>
+			<td><%= f.text_field :firstname, :required => true, :mark => '*' %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :lastname %></td>
+			<td><%= f.text_field :lastname, :required => true %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :email %></td>
+			<td><%= f.text_field :email, :disabled=>true, :required => true %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :institute, "Institute Affiliation" %></td>
+			<td><%= f.text_field :institute, :required => true %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :address %></td>
+			<td><%= f.text_field :address, :required => true %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :city %></td>
+			<td><%= f.text_field :city, :required => true %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :zipcode %></td>
+			<td><%= f.text_field :zipcode, :required => true %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :country %></td>
+			<td><%= f.text_field :country, :required => true %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :phone %></td>
+			<td><%= f.text_field :phone, :required => true %></td>
+		</tr>
+
+	</table>
+
+	<div class="actions">
+		<%= f.submit "Update" %>
+		<%= submit_tag 'Cancel', :action => 'show' %>
+	</div>
+
+
+<% end %>
