@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+	respond_to :xml, :html
+
 	#	before_filter :require_no_user, :only => [:new, :create]
 	before_filter :require_user, :only => [:show, :edit, :update]
 
@@ -22,9 +24,10 @@ class UsersController < ApplicationController
 				if session[:where_from] == 'registration'
 					format.html { redirect_to(new_registrations_path(@user.id)) }
 					format.xml { render :xml => @user, :status => :created, :location => @user }
+				else
+					format.html { redirect_to :home }
+					format.xml { render :xml => @user, :status => :created, :location => @user }
 				end
-				format.html { redirect_to :home }
-				format.xml { render :xml => @user, :status => :created, :location => @user }
 			else
 				flash[:notice] = @user.errors
 				if session[:where_from] == 'registration'
@@ -42,49 +45,47 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find(@current_user.id)
-
-		respond_to do |format|
-			format.html # show.html.erb
-			format.xml { render :xml => @user }
-		end
+		logger.info "Users#show, user credentials ID = #{session[:user_credentials_id]}"
+		@user = User.find(session[:user_credentials_id])
 	end
 
 	def edit
 		@user = User.find(@current_user.id)
-		logger.info "$%^$%^$%^$%^$%^$^$%^$%^$ #{@user.id}"
+		logger.info "Users#edit, user ID -  #{@user.id}"
 	end
 
 	def update
-
-		logger.info "ID for User that is being updated #{@current_user.id} #*#*#*#*#*#*#*#*#*#*#*#*#"
+		logger.info "ID for User that is being updated #{@current_user.id}" 
 		@user = User.find(@current_user.id)
-		#@user = @current_user
 		@user.attributes = params[:user]
 		if session[:where_from] == 'registration'
 			@user.is_registered = 1
 		end
 
 		if params[:commit] != 'Cancel'
-			respond_to do |format|
-				if @user.save
-					flash[:notice] = "Successfully updated registration"
-					logger.info "Successfully updated registration for #{@user.email}"
+			#respond_to do |format|
+			if @user.save
+				flash[:notice] = "Successfully updated registration"
+				logger.info "Successfully updated registration for #{@user.email}"
 
-					# Send confirmation emails to user and the host
-					# RegistrationConfirmation.update_confirmation_to_host(@user).deliver
-					# RegistrationConfirmation.update_confirmation_to_user(@user).deliver
-					if session[:where_from] == 'registration'
-						format.html { redirect_to registrations_path(current_user) }
-						format.xml { render :xml => @user, :status => :created, :location => @user }
-					end
-					format.html {redirect_to :home}
+				# RegistrationConfirmation.update_confirmation_to_host(@user).deliver
+				# RegistrationConfirmation.update_confirmation_to_user(@user).deliver
+
+				if session[:where_from] == 'registration'
+					#format.html { redirect_to registrations_path(current_user) }
+					redirect_to registrations_path(@user)
+					#format.xml { render :xml => @user, :status => :created, :location => @user }
 				else
-					logger.info "Unable to update registration."
-					format.html { render :action => "edit" }
-					format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
+					#		format.html {redirect_to :home}
+					redirect_to users_path(@user)
 				end
+			else
+				logger.info "Unable to update registration."
+				#format.html { render :action => "edit" }
+				render :action=>"edit"
+				#format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
 			end
+			#end
 		else
 			flash[:notice] = "Cancelled"
 			redirect_to registrations_path(current_user)
