@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
 
-	respond_to :xml, :html
-
-	#	before_filter :require_no_user, :only => [:new, :create]
+	before_filter :require_no_user, :only => [:new, :create]
 	before_filter :require_user, :only => [:show, :edit, :update]
 
 	def new
@@ -63,7 +61,6 @@ class UsersController < ApplicationController
 		end
 
 		if params[:commit] != 'Cancel'
-			#respond_to do |format|
 			if @user.save
 				flash[:notice] = "Successfully updated registration"
 				logger.info "Successfully updated registration for #{@user.email}"
@@ -72,20 +69,14 @@ class UsersController < ApplicationController
 				# RegistrationConfirmation.update_confirmation_to_user(@user).deliver
 
 				if session[:where_from] == 'registration'
-					#format.html { redirect_to registrations_path(current_user) }
 					redirect_to registrations_path(@user)
-					#format.xml { render :xml => @user, :status => :created, :location => @user }
 				else
-					#		format.html {redirect_to :home}
 					redirect_to users_path(@user)
 				end
 			else
 				logger.info "Unable to update registration."
-				#format.html { render :action => "edit" }
-				render :action=>"edit"
-				#format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
+				render action: "edit"
 			end
-			#end
 		else
 			flash[:notice] = "Cancelled"
 			redirect_to registrations_path(current_user)

@@ -1,7 +1,7 @@
 class UserSessionsController < ApplicationController
 
-	#before_filter :require_no_user, :only => [:new, :create]
-	#before_filter :require_user, :only => :destroy
+	before_filter :require_no_user, :only => [:new, :create]
+	before_filter :require_user, :only => :destroy
 
 	include UserSessionsHelper, UsersHelper
 
@@ -15,7 +15,6 @@ class UserSessionsController < ApplicationController
 
 		has_valid_email = valid_email?(params[:user_session][:email])
 		has_valid_password = verify_recaptcha
-
 
 		if !has_valid_email or !has_valid_password
 			logger.info 'Invalid user name and password'
@@ -32,9 +31,6 @@ class UserSessionsController < ApplicationController
 						flash[:notice] = "You are already registered with #{params[:user_session][:email]}"
 						redirect_to registrations_path(:id => @user.id)
 					end
-				elsif session[:where_from] == 'abstract'
-					flash[:notice_error] = "Please try to register or submit an abstract first"
-					redirect_to new_users_path
 				end
 				redirect_to :signup
 			else
@@ -65,7 +61,7 @@ class UserSessionsController < ApplicationController
 							redirect_to admin_url
 							return
 						else
-							redirect_to abstracts_path
+							redirect_to :home
 							return
 						end
 					end
