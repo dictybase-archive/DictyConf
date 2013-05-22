@@ -1,7 +1,7 @@
 class RegistrationsController < ApplicationController
 
 	def new
-		logger.info 'User is ***not*** registered'
+		logger.info 'User is NOT registered'
 		@user = User.new(:email => session[:email])
 		render :action => 'new'
 	end
@@ -26,7 +26,7 @@ class RegistrationsController < ApplicationController
 	end
 
 	def edit
-		logger.info "Editing user registration #{current_user.email}"
+		logger.info "Registrations#edit, user email - #{current_user.email}"
 		@user = User.find(@current_user.id)
 		render action: 'edit'
 	end
@@ -40,6 +40,7 @@ class RegistrationsController < ApplicationController
 	end
 
 	def show
-		@user = User.find(@current_user.id)
+		logger.info "Registrations#show, user ID - #{session[:user_credentials_id]}"
+		@user = User.find(session[:user_credentials_id])
 	end
 end
