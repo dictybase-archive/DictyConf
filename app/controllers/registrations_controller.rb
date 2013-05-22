@@ -2,7 +2,7 @@ class RegistrationsController < ApplicationController
 
 	def new
 		logger.info 'User is NOT registered'
-		@user = User.new(:email => session[:email])
+		@user = User.new(session[:email])
 		render :action => 'new'
 	end
 
